@@ -7,7 +7,6 @@ package burgerselforderkiosk;
 /**
  *
  * @author jaime
- * @author ivann
  */
 public class BurgerSelfOrderKiosk {
 

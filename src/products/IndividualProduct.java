@@ -15,6 +15,12 @@ public class IndividualProduct implements Product {
     private String imageFileName;
     private int price; 
     
+    public void IndividualProduct(String name, String descr, String imageFileName, int price) {
+        this.name = name;
+        this.description = descr;
+        this.imageFileName = imageFileName;
+        this.price = price;
+    }
 
     @Override
     public int getPrice() {
