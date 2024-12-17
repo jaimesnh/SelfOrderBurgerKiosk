@@ -4,10 +4,13 @@
  */
 package manager;
 
+import java.util.*;
+
 /**
  *
  * @author jaime
  */
 public class Translator {
     
+    private Map<String, String> palabras;
 }

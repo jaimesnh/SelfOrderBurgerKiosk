@@ -4,10 +4,14 @@
  */
 package manager;
 
+import java.util.*;
+
 /**
  *
  * @author jaime
  */
 public class TranslatorManager {
     
+    private Translator currentDictionary;
+    private Map<String, Translator> dictionaries;
 }
