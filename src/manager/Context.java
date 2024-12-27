@@ -34,14 +34,18 @@ public class Context {
     }
     
     public void setOrder(Order order) { 
-        this.orderNumber += 1;
+        this.order = order;
+        
     }
     
     public void initialize() {   
         this.translator = new TranslatorManager();
         this.kiosk = new SimpleKiosk (this.translator);
-        this.order = new order();
         this.menuCard = new MenuCard();
-        this.orderNumber = 0;
+        this.orderNumber = 1;
+    }
+    
+    public void incrementOrderNumber() {
+            this.orderNumber ++;
     }
 }
