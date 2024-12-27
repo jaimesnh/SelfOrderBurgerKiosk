@@ -14,7 +14,7 @@ public class MenuCardSection {
     
     private String sectionName;
     private String imageFileName;
-    private List<IndividualProduct> productList;; 
+    private List<IndividualProduct> productList; 
     
     public MenuCardSection(String sectionName, String imageFileName, List<IndividualProduct> productList) {
         this.sectionName = sectionName;

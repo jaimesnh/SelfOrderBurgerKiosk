@@ -13,6 +13,7 @@ import java.util.*;
  *
  * @author jaime
  */
+
 public class MenuCard {
     
     private List<MenuCardSection> sectionList;
