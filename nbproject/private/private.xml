@@ -6,10 +6,13 @@
         <group>
             <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/products/MenuCard.java</file>
             <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/screens/WellcomeScreen.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/products/Order.java</file>
             <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/products/Product.java</file>
             <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/products/MenuCardSection.java</file>
-            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/products/Menu.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/screens/SectionScreen.java</file>
             <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/screens/KioskScreen.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/manager/SimpleKiosk.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/screens/CarouselScreen.java</file>
             <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/products/IndividualProduct.java</file>
         </group>
     </open-files>

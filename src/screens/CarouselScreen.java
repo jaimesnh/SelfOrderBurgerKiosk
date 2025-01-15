@@ -14,16 +14,17 @@ public abstract class CarouselScreen implements KioskScreen {
     
     protected void adjustCarruselButtons(SimpleKiosk kiosk, int currentElement, int numberOfElements) {
             
-        if (currentElement != 0) {
-            kiosk.setOption('D', "<");
+        if (currentElement != 1) {
+            kiosk.setOption('G', "<");
         }
         if (currentElement != numberOfElements) {
-            kiosk.setOption('E', ">");
+            kiosk.setOption('H', ">");
         }
     }
     protected void configureScreenButtons(SimpleKiosk kiosk) {
         
-        kiosk.setOption('B', "Cancelar menú del pedido");
+        kiosk.setOption('B', "Volver atras");
         kiosk.setOption('C', "Cancelar pedido");
     }
 }
+

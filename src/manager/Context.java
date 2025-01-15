@@ -3,16 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package manager;
+
+import products.MenuCard;
+import products.Order;
+
 /**
  *
  * @author jaime
  */
 public class Context {
     //ATRIBUTOS
-    private SimpleKiosk kiosk;
-    private TranslatorManager translator;   
+    private TranslatorManager translatorManager = new TranslatorManager();
+    private SimpleKiosk kiosk = new SimpleKiosk(translatorManager);
     private Order order;                    
-    private MenuCard menuCard;
+    private MenuCard menuCard = MenuCard.loadFromDisk();
     private int orderNumber;
     private int kioskNumber;
     private int numberofKiosks;
@@ -35,14 +39,10 @@ public class Context {
     
     public void setOrder(Order order) { 
         this.order = order;
-        
     }
     
     public void initialize() {   
-        this.translator = new TranslatorManager();
-        this.kiosk = new SimpleKiosk (this.translator);
-        this.menuCard = new MenuCard();
-        this.orderNumber = 1;
+        this.order = new Order();
     }
     
     public void incrementOrderNumber() {

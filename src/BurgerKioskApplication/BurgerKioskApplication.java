@@ -2,19 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package burgerselforderkiosk;
+package BurgerKioskApplication;
+
+import manager.KioskManager;
 
 /**
  *
  * @author jaime
  */
-public class BurgerSelfOrderKiosk {
+public class BurgerKioskApplication {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        KioskManager km = new KioskManager();
+        km.start();
     }
-    
 }

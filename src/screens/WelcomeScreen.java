@@ -12,7 +12,7 @@ import manager.SimpleKiosk;
  *
  * @author jaime
  */
-public class WellcomeScreen implements KioskScreen {
+public class WelcomeScreen implements KioskScreen {
 
         
         @Override

@@ -6,6 +6,7 @@ package screens;
 
 import manager.Context;
 import manager.SimpleKiosk;
+import products.Order;
 
 /**
  *
@@ -13,9 +14,11 @@ import manager.SimpleKiosk;
  */
 public class PurcheaseScreen implements KioskScreen{
 
+    private Order order;
+    @Override
     public KioskScreen show(Context c) {
         SimpleKiosk kiosk = c.getKiosk();
-
+        Order order = (Order) c.getOrder();
        
         configureScreenButtons(kiosk);
         char event = kiosk.waitEvent(30);
@@ -28,7 +31,7 @@ public class PurcheaseScreen implements KioskScreen{
             default:
                 return (KioskScreen) this;
             case '1': 
-                kiosk.retainCard(false);
+                kiosk.retainCreditCard(false);
                 int cardNumber = (int) kiosk.getCardNumber();
                 
                 if kiosk.comunicationAvailable() {
@@ -36,7 +39,6 @@ public class PurcheaseScreen implements KioskScreen{
                         c.incrementOrderNumber();
                         this.writerOrderToFile(kiosk);
                         kiosk.expelCreditCard(30);
-
                         return new WellcomeScreen();
                     }
                     else {
@@ -51,13 +53,13 @@ public class PurcheaseScreen implements KioskScreen{
     
         private void configureScreenButtons(SimpleKiosk kiosk) {
             kiosk.setTitle("Introduce la tarjeta de crédito");
-            kiosk.setDescription(order.getOrderText + "\n" + "Total: " + order.getTotalAmount/100 + "\n" + "Introduce la tarjeta de crédito para confirmar el pedido o pulsa alguno de los botones inferiores");
+            kiosk.setDescription(order.getOrderText() + "\n" + "Total: " + order.getTotalAmount()/100 + "\n" + "Introduce la tarjeta de crédito para confirmar el pedido o pulsa alguno de los botones inferiores");
             kiosk.setOption('A', "Modificar pedido");
             kiosk.setOption('B', "Cancelar pedido");
         }
         
         private void writerOrderToFile(SimpleKiosk kiosk) {
-            kiosk.print(order.getOrderText);
+            kiosk.print(order.getOrderText());
         }
         
 }

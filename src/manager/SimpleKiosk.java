@@ -4,6 +4,8 @@
  */
 package manager;
 
+import sienens.BurgerSelfOrderKiosk;
+
 /**
  *
  * @author jaime
@@ -17,19 +19,19 @@ public class SimpleKiosk {
     }
 
     public void setOption(char option, String value) {
-    
+        kiosk.setOption(option,value);
     }
     
     public void setTitle(String title) {
-    
+        kiosk.setTitle(title);
     }
     
     public void setDescription(String description) {
-    
+        kiosk.setDescription(description);
     }
     
     public void setMenuMode() {
-    
+        kiosk.setMenuMode();
     }
     
     public char waitEvent(int timeout) { 
@@ -37,30 +39,31 @@ public class SimpleKiosk {
     }
     
     public void print(String text) {
-    
+        kiosk.print(text);
     }
     
-    public void retainCard(boolean retain) {
-    
+    public void retainCreditCard(boolean retain) {
+        kiosk.retainCreditCard(retain);
     }
     
     public void expelCreditCard(int timeout) {
-    
+        kiosk.expelCreditCard(timeout);
     }
     
     public void clearScreen() {
-    
+        kiosk.clearScreen();
     }
     
-    public void setImage(String image) {
-    
+    public void setImage(String imageFileName) {
+        kiosk.setImage(imageFileName);
     }
     
     public long getCardNumber() { 
-        return 0L; 
+        return kiosk.getCardNumber(); 
     }
     
     public void setMessageMode() {
+        kiosk.setMessageMode();
     }
     
 }

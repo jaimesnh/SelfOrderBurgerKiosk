@@ -18,7 +18,7 @@ public class OrderScreen implements KioskScreen {
         public KioskScreen show(Context c) {
             SimpleKiosk kiosk = c.getKiosk();
 
-            c.setOrder( new Order());
+            c.setOrder(new Order());
             kiosk.clearScreen();
             configureScreenButtons(kiosk);
 
@@ -26,11 +26,11 @@ public class OrderScreen implements KioskScreen {
 
             switch (event) {
                 case 'A':
-                    return new ProductScreen();
+                    return new ProductScreen(currentSection);
                 case 'B':
                     return new SectionScreen();
                 case 'C':
-                    return (KioskScreen) new PurcheaseScreen();
+                    return new PurcheaseScreen();
                 case 'D':
                     return new WellcomeScreen();
                 default:

@@ -4,6 +4,9 @@
  */
 package manager;
 
+import screens.KioskScreen;
+import screens.WelcomeScreen;
+
 /**
  *
  * @author jaime
@@ -11,10 +14,11 @@ package manager;
 public class KioskManager {
     
     public void start(){
-        Context c = new Context();
-        WelcomeScreen ws = new WelcomeScreen();
-        ws.show(c);
         
-    
-}
+        Context c = new Context();
+        KioskScreen nextScreen = new WelcomeScreen();
+        while (true) {
+            nextScreen = nextScreen.show(c);
+        }
+    }
 }

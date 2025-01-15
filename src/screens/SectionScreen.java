@@ -1,50 +1,65 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package screens;
 
 import manager.Context;
 import manager.SimpleKiosk;
+import products.MenuCard;
+import products.MenuCardSection;
 
 /**
  *
  * @author jaime
  */
 public class SectionScreen extends CarouselScreen {
-    
+
+    private int currentSection = 1;
+    private MenuCardSection mcs;
+
     @Override
     public KioskScreen show(Context c) {
-        SimpleKiosk kiosk = c.getKiosk();
+
+        private SimpleKiosk kiosk = c.getKiosk();
+        MenuCard mc = (MenuCard) c.getMenuCard();
+        int numberOfSections = mc.getNumberOfSections();
         
+        this.mcs = mc.getSection(currentSection);
+
+        super.adjustCarruselButtons(kiosk, currentSection, numberOfSections);
+
         kiosk.clearScreen();
-        configureScreenButtons(kiosk);
-        
-        
+        this.configureScreenButtons();
+
+
         char event = kiosk.waitEvent(30);
 
         switch (event) {
-            case 'A': //AÑADIR
+            case 'A': // Añadir
+                return new ProductScreen(currentSection);
+            case 'B': // Cancelar menú
                 return new OrderScreen();
-            case 'B': //CANCELAR MENU
-                return new IdiomScreen();
-            case 'C': //CANCELAR PEDIDO
+            case 'C': // Cancelar pedido
                 return new WellcomeScreen();
-            case 'D': //ANTERIOR
-                
+            case 'G': // Anterior 
+                if (currentSection > 1) {
+                    currentSection--;
+                }
                 return this;
-            case 'E': //SIGUIENTE
+            case 'H': // Siguiente 
+                if (currentSection < numberOfSections) {
+                    currentSection++;
+                }
                 return this;
             default:
                 return this;
         }
-        
     }
-    
-    
+
     @Override
     public void configureScreenButtons(SimpleKiosk kiosk) {
-        kiosk.setTitle("Elije un tipo de producto");
-        kiosk.setOption('A', "Seleccionar categoria");
+
+        kiosk.setTitle("Seleccione un tipo de producto");
+        kiosk.setDescription(mcs.getSectionName());
+        kiosk.setImage(mcs.getImageFileName());
+        kiosk.setOption('A', "Seleccionar categoría");
+        
     }
 }
