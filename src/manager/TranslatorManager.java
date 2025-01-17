@@ -51,13 +51,14 @@ public class TranslatorManager {
     }
     
     
-    public List getIdioms() throws IOException{
+    public List getIdioms(){
         ArrayList<String> idiomList = new ArrayList<>();
         for (Map.Entry<String, Translator> entry : dictionaries.entrySet()) {
             idiomList.add(entry.getKey());
         }
         return idiomList;
     }
+    
     public String translate (String idiom){
         return currentDictionary.translate (idiom);
     }

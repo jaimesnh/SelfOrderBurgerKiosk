@@ -11,7 +11,7 @@ import products.MenuCardSection;
  */
 public class SectionScreen extends CarouselScreen {
 
-    private int currentSection = 1;
+    private int currentSection = 0;
     private MenuCardSection mcs;
 
     @Override
@@ -39,7 +39,7 @@ public class SectionScreen extends CarouselScreen {
             case 'C': // Cancelar pedido
                 return new WelcomeScreen();
             case 'G': // Anterior 
-                if (currentSection > 1) {
+                if (currentSection > 0) {
                     currentSection--;
                 }
                 return this;
@@ -56,6 +56,7 @@ public class SectionScreen extends CarouselScreen {
     @Override
     public void configureScreenButtons(SimpleKiosk kiosk) {
 
+        super.configureScreenButtons(kiosk);
         kiosk.setTitle("Seleccione un tipo de producto");
         kiosk.setDescription(mcs.getSectionName());
         kiosk.setImage(mcs.getImageFileName());
