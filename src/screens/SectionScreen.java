@@ -17,7 +17,7 @@ public class SectionScreen extends CarouselScreen {
     @Override
     public KioskScreen show(Context c) {
 
-        private SimpleKiosk kiosk = c.getKiosk();
+        SimpleKiosk kiosk = c.getKiosk();
         MenuCard mc = (MenuCard) c.getMenuCard();
         int numberOfSections = mc.getNumberOfSections();
         
@@ -26,7 +26,7 @@ public class SectionScreen extends CarouselScreen {
         super.adjustCarruselButtons(kiosk, currentSection, numberOfSections);
 
         kiosk.clearScreen();
-        this.configureScreenButtons();
+        this.configureScreenButtons(kiosk);
 
 
         char event = kiosk.waitEvent(30);
@@ -37,7 +37,7 @@ public class SectionScreen extends CarouselScreen {
             case 'B': // Cancelar menú
                 return new OrderScreen();
             case 'C': // Cancelar pedido
-                return new WellcomeScreen();
+                return new WelcomeScreen();
             case 'G': // Anterior 
                 if (currentSection > 1) {
                     currentSection--;

@@ -1,0 +1,15 @@
+Elije un producto nuevo o finaliza pedido = Elije un producto nuevo o finaliza pedido
+Añadir menu a pedido = Añadir menu a pedido
+Añadir producto individual al pedido = Añadir producto individual al pedido
+Finalizar y pagar = Finalizar y pagar
+Cancelar pedido = Cancelar pedido
+<- = <-
+-> = ->
+Volver atras = Volver atras
+URJC Burger - Bienvenido = URJC Burger - Bienvenido
+Nuevo pedido = Nuevo pedido
+Cambiar idioma = Cambiar idioma
+Seleccione un tipo de producto = Seleccione un tipo de producto
+Seleccionar categoría = Seleccionar categoría
+Introduce la tarjeta de crédito = Introduce la tarjeta de crédito
+Cancelar pago = Cancelar pago

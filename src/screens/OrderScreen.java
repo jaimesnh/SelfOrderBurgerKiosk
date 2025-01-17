@@ -6,6 +6,7 @@ package screens;
 
 import manager.Context;
 import manager.SimpleKiosk;
+import products.Order;
 
 /**
  *
@@ -13,8 +14,7 @@ import manager.SimpleKiosk;
  */
 public class OrderScreen implements KioskScreen {
     
-        @Override
-        
+        @Override      
         public KioskScreen show(Context c) {
             SimpleKiosk kiosk = c.getKiosk();
 
@@ -26,22 +26,22 @@ public class OrderScreen implements KioskScreen {
 
             switch (event) {
                 case 'A':
-                    return new ProductScreen(currentSection);
+                    return new MenuScreen();
                 case 'B':
                     return new SectionScreen();
                 case 'C':
                     return new PurcheaseScreen();
                 case 'D':
-                    return new WellcomeScreen();
+                    return new WelcomeScreen();
                 default:
                     return this;
             }
         }
         
         private void configureScreenButtons(SimpleKiosk kiosk) {
-            kiosk.setTitle("Elije un prducto nuevo o finaliza pedido");
+            kiosk.setTitle("Elije un producto nuevo o finaliza pedido");
             kiosk.setOption('A', "Añadir menú a pedido");
-            kiosk.setOption('B', "Añadir producto individua a pedido");
+            kiosk.setOption('B', "Añadir producto individual al pedido");
             kiosk.setOption('C', "Finalizar y pagar");
             kiosk.setOption('D', "Cancelar pedido");
     }

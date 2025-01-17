@@ -4,16 +4,26 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="AtmExercise"/>
         <group>
-            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/products/MenuCard.java</file>
-            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/screens/WellcomeScreen.java</file>
-            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/products/Order.java</file>
-            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/products/Product.java</file>
             <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/products/MenuCardSection.java</file>
-            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/screens/SectionScreen.java</file>
             <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/screens/KioskScreen.java</file>
-            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/manager/SimpleKiosk.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/screens/WelcomeScreen.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/screens/OrderScreen.java</file>
             <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/screens/CarouselScreen.java</file>
             <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/products/IndividualProduct.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/screens/ProductScreen.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/products/MenuCard.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/manager/KioskManager.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/manager/BurgerKioskApplication.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/screens/PurcheaseScreen.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/manager/Translator.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/products/Product.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/screens/MenuScreen.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/screens/SectionScreen.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/products/Menu.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/manager/SimpleKiosk.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/manager/TranslatorManager.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/screens/IdiomScreen.java</file>
+            <file>file:/C:/Users/jaime/OneDrive%20-%20Universidad%20Rey%20Juan%20Carlos/Java/SelfOrderBurgerKiosk/src/manager/Context.java</file>
         </group>
     </open-files>
 </project-private>

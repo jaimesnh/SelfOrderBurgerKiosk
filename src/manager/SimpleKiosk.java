@@ -4,6 +4,9 @@
  */
 package manager;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import sienens.BurgerSelfOrderKiosk;
 
 /**
@@ -13,21 +16,23 @@ import sienens.BurgerSelfOrderKiosk;
 public class SimpleKiosk {
     //ATRIBUTOS
     private BurgerSelfOrderKiosk kiosk;
+    private TranslatorManager tm;
     
     public SimpleKiosk(TranslatorManager translatorManager) {
         this.kiosk = new BurgerSelfOrderKiosk ();
+        this.tm = translatorManager;
     }
 
     public void setOption(char option, String value) {
-        kiosk.setOption(option,value);
+        kiosk.setOption(option, tm.translate(value));
     }
     
     public void setTitle(String title) {
-        kiosk.setTitle(title);
+        kiosk.setTitle(tm.translate(title));
     }
     
     public void setDescription(String description) {
-        kiosk.setDescription(description);
+        kiosk.setDescription(tm.translate(description));
     }
     
     public void setMenuMode() {
@@ -38,7 +43,12 @@ public class SimpleKiosk {
         return ' '; 
     }
     
-    public void print(String text) {
+    public void print(List<String> text) {
+        //No creo que sea necesario
+        List<String> translatedList = new ArrayList<>();
+        for (String word: text) {
+            translatedList.add(tm.translate(word));
+        }
         kiosk.print(text);
     }
     
@@ -46,12 +56,17 @@ public class SimpleKiosk {
         kiosk.retainCreditCard(retain);
     }
     
-    public void expelCreditCard(int timeout) {
-        kiosk.expelCreditCard(timeout);
+    public boolean expelCreditCard(int timeout) {
+        return kiosk.expelCreditCard(timeout);
     }
     
     public void clearScreen() {
-        kiosk.clearScreen();
+        for (char letter = 'A'; letter <= 'H'; letter++) {
+            this.setOption(letter, null);
+        }
+        this.setTitle(null);
+        this.setImage(null);
+        this.setDescription(null);
     }
     
     public void setImage(String imageFileName) {

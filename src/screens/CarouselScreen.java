@@ -15,10 +15,10 @@ public abstract class CarouselScreen implements KioskScreen {
     protected void adjustCarruselButtons(SimpleKiosk kiosk, int currentElement, int numberOfElements) {
             
         if (currentElement != 1) {
-            kiosk.setOption('G', "<");
+            kiosk.setOption('G', "<-");
         }
         if (currentElement != numberOfElements) {
-            kiosk.setOption('H', ">");
+            kiosk.setOption('H', "->");
         }
     }
     protected void configureScreenButtons(SimpleKiosk kiosk) {

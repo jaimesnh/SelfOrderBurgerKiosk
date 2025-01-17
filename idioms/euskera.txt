@@ -1,0 +1,15 @@
+Elije un producto nuevo o finaliza pedido = Aukeratu produktu berria edo amaitu eskaera
+Añadir menu a pedido = Gehitu menua eskaerara
+Añadir producto individual al pedido = Gehitu produktu banakoa eskaerara
+Finalizar y pagar = Amaitu eta ordaindu
+Cancelar pedido = Ezeztatu eskaera
+<- = <-
+-> = ->
+Volver atras = Atzera joan
+URJC Burger - Bienvenido = URJC Burger - Ongi etorri
+Nuevo pedido = Eskaera berria
+Cambiar idioma = Aldatu hizkuntza
+Seleccione un tipo de producto = Aukeratu produktu mota
+Seleccionar categoría = Kategoria aukeratu
+Introduce la tarjeta de crédito = Sartu kredituko txartela
+Cancelar pago = Ezeztatu ordainketa

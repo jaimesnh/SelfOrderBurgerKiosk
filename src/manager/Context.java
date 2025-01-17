@@ -15,14 +15,15 @@ public class Context {
     //ATRIBUTOS
     private TranslatorManager translatorManager = new TranslatorManager();
     private SimpleKiosk kiosk = new SimpleKiosk(translatorManager);
-    private Order order;                    
+    private Order order = new Order();                    
     private MenuCard menuCard = MenuCard.loadFromDisk();
     private int orderNumber;
-    private int kioskNumber;
-    private int numberofKiosks;
+    private int kioskNumber = 1;
+    private int numberofKiosks = 1;
+ 
     
     public TranslatorManager getTranslator() { 
-        return translator; 
+        return translatorManager; 
     }
     
     public SimpleKiosk getKiosk() { 
@@ -45,7 +46,7 @@ public class Context {
         this.order = new Order();
     }
     
-    public void incrementOrderNumber() {
-            this.orderNumber ++;
+    public int getKioskNumber() {
+        return this.kioskNumber;
     }
 }

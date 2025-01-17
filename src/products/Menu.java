@@ -4,6 +4,9 @@
  */
 package products;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -13,7 +16,17 @@ import java.util.*;
 public class Menu implements Product{
     
     private List<IndividualProduct> products;
-    private static int discount;  
+    private static int discount = -1;  
+    
+    
+    public void menu() throws IOException {
+        if (discount == -1) {
+            try (BufferedReader br = new BufferedReader(new FileReader("discount.txt"))) {
+                String line = br.readLine();
+                discount = Integer.parseInt(line.trim());
+            }
+        }
+    }
     
     @Override
     public int getPrice() {
@@ -46,5 +59,4 @@ public class Menu implements Product{
         return products.size();
     }
     
-    // FALTA EL LEER Y ESCRIBIR DE ARCHIVO 
 }

@@ -10,10 +10,10 @@ import manager.Context;
  *
  * @author jaime
  */
-public class IdiomScreen extends CarouselScreen {
-
+public class MenuScreen extends CarouselScreen {
+    
     @Override
-    public KioskScreen show(Context context) {
+    public KioskScreen show(Context c) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

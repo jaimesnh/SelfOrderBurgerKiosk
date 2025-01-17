@@ -35,8 +35,18 @@ public class MenuCard {
 
     public static MenuCard loadFromDisk() {
         try (XMLDecoder decoder = new XMLDecoder(new FileInputStream("catalog.xml"))) {
-            List<MenuCardSection> sectionList = (List<MenuCardSection>) decoder.readObject();
-            return new MenuCard(sectionList);
+            // Leemos el objeto y verificamos si es una lista
+            Object obj = decoder.readObject();
+            
+            // Verificar si el objeto es una lista de MenuCardSection
+            if (obj instanceof List<?>) {
+                List<?> list = (List<?>) obj;
+                if (list.isEmpty() || list.get(0) instanceof MenuCardSection) {
+                    // Si es una lista de MenuCardSection, la casteamos correctamente
+                    List<MenuCardSection> sectionList = (List<MenuCardSection>) obj;
+                    return new MenuCard(sectionList);
+                }
+            }
             
         } catch(FileNotFoundException fileNotFound){
             System.out.println(fileNotFound.getMessage());

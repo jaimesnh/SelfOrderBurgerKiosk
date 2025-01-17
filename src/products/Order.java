@@ -38,11 +38,17 @@ public class Order {
         return this.orderNumber;
     }
     
-    public void setOrderNumber(Context c) {
-        this.orderNumber = c.orderNumber;
-    }
-    
     public void addProduct(Product p) {
         productList.add(p);
+    }
+    
+    public List<String> getTicket() {
+        
+        List<String> ticket = new ArrayList<>();
+        for (Product p : productList) {
+            ticket.add(p.getName());
+        }
+        ticket.add(Integer.toString(this.getTotalAmount()));
+        return ticket;
     }
 }

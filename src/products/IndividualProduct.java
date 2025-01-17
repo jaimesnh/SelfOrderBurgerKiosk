@@ -15,9 +15,9 @@ public class IndividualProduct implements Product {
     private String imageFileName;
     private int price; 
     
-    public void IndividualProduct(String name, String descr, String imageFileName, int price) {
+    public IndividualProduct(String name, String description, String imageFileName, int price) {
         this.name = name;
-        this.description = descr;
+        this.description = description;
         this.imageFileName = imageFileName;
         this.price = price;
     }

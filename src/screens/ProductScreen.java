@@ -21,20 +21,11 @@ public class ProductScreen extends CarouselScreen {
  
         @Override
     public KioskScreen show(Context c) {
-        
-        SimpleKiosk kiosk = c.getKiosk();
-        super.configureScreenButtons(kiosk);
-
-
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
     
-        @Override
-    public void configureScreenButtons(Simplekiosk kiosk) {
-        
-        kiosk.clearScreen();
-        super.configureScreenButtons(kiosk);
-        kiosk.setOption('A', "Añadir al pedido");
-        
+    public void configureScreenButtons() {
+        throw new UnsupportedOperationException("Not supported yet.");
         
     }
 
