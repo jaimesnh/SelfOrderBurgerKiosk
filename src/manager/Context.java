@@ -29,7 +29,6 @@ public class Context {
     public SimpleKiosk getKiosk() { 
         return kiosk; 
     }
-    
     public Order getOrder() { 
         return order; 
     }
@@ -39,8 +38,8 @@ public class Context {
     }
     
     public void setOrder(Order order) { 
-        this.order = order;
-    }
+        this.order =order;
+    } 
     
     public void initialize() {   
         this.order = new Order();
