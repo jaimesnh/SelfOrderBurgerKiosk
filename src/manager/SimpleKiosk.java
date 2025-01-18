@@ -4,8 +4,6 @@
  */
 package manager;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import sienens.BurgerSelfOrderKiosk;
 
@@ -24,15 +22,18 @@ public class SimpleKiosk {
     }
 
     public void setOption(char option, String value) {
-        kiosk.setOption(option, tm.translate(value));
+        //kiosk.setOption(option, tm.translate(value));
+        kiosk.setOption(option, value);
     }
     
     public void setTitle(String title) {
-        kiosk.setTitle(tm.translate(title));
+        //kiosk.setTitle(tm.translate(title));
+        kiosk.setTitle(title);
     }
     
     public void setDescription(String description) {
-        kiosk.setDescription(tm.translate(description));
+        //kiosk.setDescription(tm.translate(description));
+        kiosk.setDescription(description);
     }
     
     public void setMenuMode() {
@@ -45,10 +46,10 @@ public class SimpleKiosk {
     
     public void print(List<String> text) {
         //No creo que sea necesario
-        List<String> translatedList = new ArrayList<>();
-        for (String word: text) {
-            translatedList.add(tm.translate(word));
-        }
+        //List<String> translatedList = new ArrayList<>();
+        //for (String word: text) {
+        //    translatedList.add(tm.translate(word));
+        //}
         kiosk.print(text);
     }
     

@@ -31,7 +31,7 @@ class Translator {
             String s;
             while ((s = buf.readLine()) != null) {
                 try (Scanner sc = new Scanner(s)) {
-                    sc.useDelimiter("=");
+                    sc.useDelimiter(" = ");
                     if (sc.hasNext()) {
                         String key = sc.next().trim();
                         if (sc.hasNext()) {

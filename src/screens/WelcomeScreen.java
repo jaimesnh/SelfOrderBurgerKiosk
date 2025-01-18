@@ -35,6 +35,7 @@ public class WelcomeScreen implements KioskScreen {
     }
     
     private void configureScreenButtons(SimpleKiosk kiosk) {
+        kiosk.setMenuMode();
         kiosk.setTitle("URJC Burger - Bienvenido");
         kiosk.setOption('A', "Nuevo pedido");
         kiosk.setOption('B', "Cambiar idioma");
