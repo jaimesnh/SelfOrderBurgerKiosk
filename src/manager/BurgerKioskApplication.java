@@ -4,13 +4,15 @@
  */
 package manager;
 
+import java.io.IOException;
+
 /**
  *
  * @author jaime
  */
 public class BurgerKioskApplication {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         KioskManager km = new KioskManager();
         km.start();
     }

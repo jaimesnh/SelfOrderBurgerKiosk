@@ -39,6 +39,6 @@ public class WelcomeScreen implements KioskScreen {
         kiosk.setTitle("URJC Burger - Bienvenido");
         kiosk.setOption('A', "Nuevo pedido");
         kiosk.setOption('B', "Cambiar idioma");
-        kiosk.setImage("Logo.png");
+        kiosk.setImage("PRODUCTOS/" + "Logo.png");
     }
 }

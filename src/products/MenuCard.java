@@ -35,22 +35,22 @@ public class MenuCard {
 
     public static MenuCard loadFromDisk() {
         try (XMLDecoder decoder = new XMLDecoder(new FileInputStream("catalog.xml"))) {
-            // Leemos el objeto y verificamos si es una lista
+            // Leer el objeto desde el archivo XML
             Object obj = decoder.readObject();
-            
-            // Verificar si el objeto es una lista de MenuCardSection
-            if (obj instanceof List<?>) {
-                List<?> list = (List<?>) obj;
-                if (list.isEmpty() || list.get(0) instanceof MenuCardSection) {
-                    // Si es una lista de MenuCardSection, la casteamos correctamente
-                    List<MenuCardSection> sectionList = (List<MenuCardSection>) obj;
-                    return new MenuCard(sectionList);
-                }
+
+            // Verificar si el objeto deserializado es una instancia de MenuCard
+            if (obj instanceof MenuCard) {
+                return (MenuCard) obj;
+            } else {
+                System.out.println("El archivo XML no contiene un objeto MenuCard válido.");
             }
-            
-        } catch(FileNotFoundException fileNotFound){
-            System.out.println(fileNotFound.getMessage());
+        } catch (FileNotFoundException e) {
+            System.out.println("Archivo no encontrado: " + e.getMessage());
+        } catch (ClassCastException e) {
+            System.out.println("Error al convertir el objeto: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Ocurrió un error inesperado: " + e.getMessage());
         }
-        return null;
+        return null; // Retorna null si algo falla
     }
 }

@@ -15,7 +15,8 @@ import java.util.Scanner;
 public class TranslatorManager {
     private Translator currentDictionary;
     private Map <String, Translator> dictionaries;
-    public TranslatorManager () throws IOException{
+    
+    public TranslatorManager() throws IOException {
         File folder = new File ("idioms"); // carprta idiomas            
         File[] idiomDocs = folder.listFiles();
         this.dictionaries = new HashMap<>();

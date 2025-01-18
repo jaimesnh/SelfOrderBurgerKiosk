@@ -22,7 +22,7 @@ public class ProductScreen extends CarouselScreen {
     private int currentProduct = 0;
     
     public ProductScreen(int currentSection) {
-        this.section = section;        
+        this.section = currentSection;        
     }
     
     
@@ -37,7 +37,7 @@ public class ProductScreen extends CarouselScreen {
                
         kiosk.clearScreen();
         configureScreenButtons(kiosk, mcs, p);
-        super.adjustCarruselButtons(kiosk, currentProduct, numProducts);
+        super.adjustCarruselButtons(kiosk, currentProduct, numProducts-1);
         
         char event = kiosk.waitEvent(30);
 
@@ -68,10 +68,14 @@ public class ProductScreen extends CarouselScreen {
     
     public void configureScreenButtons(SimpleKiosk kiosk, MenuCardSection mcs, IndividualProduct p) {
         super.configureScreenButtons(kiosk);
-         kiosk.setTitle("Seleccione un " + mcs.getSectionName());
-         kiosk.setImage(p.getImageFileName());
-         kiosk.setDescription(p.getName() + p.getDescription() + p.getPrice());
-         kiosk.setOption('A', "Seleccionar producto");        
+        kiosk.setTitle("Seleccione un " + mcs.getSectionName());
+        kiosk.setImage(p.getImageFileName());
+        kiosk.setDescription(
+            p.getName() + "\n" +
+            p.getDescription() + "\n" +
+            (p.getPrice() / 100) + "€"
+        );
+        kiosk.setOption('A', "Seleccionar producto");        
     }
 
 }

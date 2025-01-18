@@ -4,6 +4,7 @@
  */
 package manager;
 
+import java.io.IOException;
 import products.MenuCard;
 import products.Order;
 
@@ -12,14 +13,19 @@ import products.Order;
  * @author jaime
  */
 public class Context {
-    //ATRIBUTOS
-    private TranslatorManager translatorManager = new TranslatorManager();
-    private SimpleKiosk kiosk = new SimpleKiosk(translatorManager);
+    private TranslatorManager translatorManager;
+    private SimpleKiosk kiosk;
     private Order order = new Order();                    
-    private MenuCard menuCard = MenuCard.loadFromDisk();
+    private MenuCard menuCard;
     private int orderNumber;
     private int kioskNumber = 1;
     private int numberofKiosks = 1;
+
+    public Context() throws IOException {
+        this.translatorManager = new TranslatorManager();
+        this.menuCard = MenuCard.loadFromDisk();
+        this.kiosk =  new SimpleKiosk(translatorManager);
+    }
  
     
     public TranslatorManager getTranslator() { 

@@ -4,7 +4,10 @@
  */
 package screens;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import manager.Context;
 import manager.SimpleKiosk;
 import manager.TranslatorManager;
@@ -19,41 +22,46 @@ public class IdiomScreen extends CarouselScreen {
 
     @Override
     public KioskScreen show(Context c) {
-        SimpleKiosk kiosk = c.getKiosk();
-        TranslatorManager tm = c.getTranslator();
-        List idiomList = tm.getIdioms();
-        int numIdioms = idiomList.size();
-        String idiom = (String) idiomList.get(currentIdiom);
-        
-        super.configureScreenButtons(kiosk);
-        kiosk.setTitle("Seleccione un idioma");
-        kiosk.setDescription(idiom);
-        kiosk.setOption('A', "Seleccionar idioma");
-        super.adjustCarruselButtons(kiosk,currentIdiom,numIdioms);
-        
-        char event = kiosk.waitEvent(30);
-
-        switch (event) {
-            case 'A': // Añadir
-                tm.setCurrentIdiom(idiom);
-                return new OrderScreen();
-            case 'B': // Cancelar seleccion
-                return new OrderScreen();
-            case 'C': // Cancelar pedido
-                return new WelcomeScreen();
-            case 'G': // Anterior 
-                if (currentIdiom > 0) { 
-                    currentIdiom--;
-                }
-                return this;
-            case 'H': // Siguiente 
-                if (currentIdiom < numIdioms) {
-                    currentIdiom++;
-                }
-                return this;
-            default:
-                return this;
+        try {
+            SimpleKiosk kiosk = c.getKiosk();
+            TranslatorManager tm = c.getTranslator();
+            List idiomList = tm.getIdioms();
+            int numIdioms = idiomList.size();
+            String idiom = (String) idiomList.get(currentIdiom);
+            
+            super.configureScreenButtons(kiosk);
+            kiosk.setTitle("Seleccione un idioma");
+            kiosk.setDescription(idiom);
+            kiosk.setOption('A', "Seleccionar idioma");
+            super.adjustCarruselButtons(kiosk,currentIdiom,numIdioms);
+            
+            char event = kiosk.waitEvent(30);
+            
+            switch (event) {
+                case 'A': // Añadir
+                    tm.setCurrentIdiom(idiom);
+                    return new OrderScreen();
+                case 'B': // Cancelar seleccion
+                    return new OrderScreen();
+                case 'C': // Cancelar pedido
+                    return new WelcomeScreen();
+                case 'G': // Anterior
+                    if (currentIdiom > 0) {
+                        currentIdiom--;
+                    }
+                    return this;
+                case 'H': // Siguiente
+                    if (currentIdiom < numIdioms) {
+                        currentIdiom++;
+                    }
+                    return this;
+                default:
+                    return this;
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(IdiomScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return this;
     }
     
 }

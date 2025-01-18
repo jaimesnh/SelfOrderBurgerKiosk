@@ -4,6 +4,7 @@
  */
 package manager;
 
+import java.io.IOException;
 import screens.KioskScreen;
 import screens.WelcomeScreen;
 
@@ -13,7 +14,7 @@ import screens.WelcomeScreen;
  */
 public class KioskManager {
     
-    public void start(){
+    public void start() throws IOException{
         
         Context c = new Context();
         KioskScreen nextScreen = new WelcomeScreen();

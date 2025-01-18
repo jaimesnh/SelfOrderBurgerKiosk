@@ -31,13 +31,13 @@ public class MenuScreen extends CarouselScreen {
                
         kiosk.clearScreen();
         configureScreenButtons(kiosk, mcs, p);
-        super.adjustCarruselButtons(kiosk, currentProduct, numProducts);
+        super.adjustCarruselButtons(kiosk, currentProduct, numProducts-1);
         
         char event = kiosk.waitEvent(30);
            
         switch (event) {
             case 'A': // Añadir
-                if (currentSection < mc.getNumberOfSections()) {
+                if (currentSection < mc.getNumberOfSections()-1) {
                     Order o = c.getOrder();
                     o.addProduct(p);
                     currentSection ++;
@@ -67,10 +67,14 @@ public class MenuScreen extends CarouselScreen {
     
     public void configureScreenButtons(SimpleKiosk kiosk, MenuCardSection mcs, IndividualProduct p) {
         super.configureScreenButtons(kiosk);
-         kiosk.setTitle("Seleccione un " + mcs.getSectionName());
-         kiosk.setImage(p.getImageFileName());
-         kiosk.setDescription(p.getName() + p.getDescription() + p.getPrice());
-         kiosk.setOption('A', "Seleccionar producto");        
+        kiosk.setTitle("Seleccione un " + mcs.getSectionName());
+        kiosk.setImage(p.getImageFileName());
+        kiosk.setDescription(
+            p.getName() + "\n" +
+            p.getDescription() + "\n" +
+            (p.getPrice() / 100) + "€"
+        );
+        kiosk.setOption('A', "Seleccionar producto");        
     }
 
 }

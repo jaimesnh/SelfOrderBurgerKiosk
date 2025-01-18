@@ -20,14 +20,11 @@ public class SectionScreen extends CarouselScreen {
         SimpleKiosk kiosk = c.getKiosk();
         MenuCard mc = (MenuCard) c.getMenuCard();
         int numberOfSections = mc.getNumberOfSections();
-        
         this.mcs = mc.getSection(currentSection);
-
-        super.adjustCarruselButtons(kiosk, currentSection, numberOfSections);
 
         kiosk.clearScreen();
         this.configureScreenButtons(kiosk);
-
+        super.adjustCarruselButtons(kiosk, currentSection, numberOfSections-1);
 
         char event = kiosk.waitEvent(30);
 

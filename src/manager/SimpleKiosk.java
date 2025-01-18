@@ -22,13 +22,13 @@ public class SimpleKiosk {
     }
 
     public void setOption(char option, String value) {
-        //kiosk.setOption(option, tm.translate(value));
-        kiosk.setOption(option, value);
+        kiosk.setOption(option, tm.translate(value));
+        //kiosk.setOption(option, value);
     }
     
     public void setTitle(String title) {
-        //kiosk.setTitle(tm.translate(title));
-        kiosk.setTitle(title);
+        kiosk.setTitle(tm.translate(title));
+        //kiosk.setTitle(title);
     }
     
     public void setDescription(String description) {
