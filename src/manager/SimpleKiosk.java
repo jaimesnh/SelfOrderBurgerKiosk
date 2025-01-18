@@ -41,7 +41,7 @@ public class SimpleKiosk {
     }
     
     public char waitEvent(int timeout) { 
-        return ' '; 
+        return kiosk.waitEvent(timeout); 
     }
     
     public void print(List<String> text) {
