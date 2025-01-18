@@ -48,7 +48,7 @@ public class Order {
         for (Product p : productList) {
             ticket.add(p.getName());
         }
-        ticket.add(Integer.toString(this.getTotalAmount()));
+        ticket.add(Float.toString((float) (this.getTotalAmount()/100.0)) + " €");
         return ticket;
     }
 }

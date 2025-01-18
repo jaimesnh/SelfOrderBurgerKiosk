@@ -42,7 +42,7 @@ public class Menu implements Product{
     @Override
     public String getName() {
 
-        StringBuilder nameBuilder = new StringBuilder("Menu compuesto por: ");
+        StringBuilder nameBuilder = new StringBuilder("Menu compuesto por: " + "\n");
         for (IndividualProduct product : products) {
             nameBuilder.append(product.getName()).append(", ");
         }
