@@ -16,8 +16,7 @@ import java.util.*;
 public class Menu implements Product{
     
     private List<IndividualProduct> products = new ArrayList();
-    public static int discount = -1;  
-    
+    private static int discount = -1;
     
     public Menu() throws IOException {
         if (discount == -1) {
@@ -36,7 +35,7 @@ public class Menu implements Product{
             total += product.getPrice();
         }
 
-        total -= (total * (discount / 100));
+        total -= (int) (total * (discount / 100.0));
         return total;
     }
 

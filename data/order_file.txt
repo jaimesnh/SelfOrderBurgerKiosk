@@ -1,5 +1,4 @@
 1Productos: 
-ANGUS
-Menu compuesto por: ALITAS
+Menu compuesto por: ANGUS, COCA COLA NORMAL, ALITAS
 
-2400
+1785

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package screens;
 
 import java.io.IOException;
@@ -14,57 +10,62 @@ import products.Menu;
 import products.MenuCard;
 import products.MenuCardSection;
 import products.Order;
+
 /**
  *
  * @author ivann
  */
 public class MenuScreen extends CarouselScreen {
-    
+
     private int currentSection = 0;
     private int currentProduct = 0;
-    
-    
-        @Override
+    private Menu m = null; // Atributo para mantener el estado del menú
+
+    @Override
     public KioskScreen show(Context c) {
         try {
             SimpleKiosk kiosk = c.getKiosk();
             MenuCard mc = c.getMenuCard();
             MenuCardSection mcs = mc.getSection(currentSection);
             IndividualProduct p = mcs.getProduct(currentProduct);
-            Menu m = new Menu();
-            System.out.println(m.discount);
             int numProducts = mcs.getNumberOfProducts();
-            
-            
+
+            if (m == null) {
+                m = new Menu();
+            }
+
             kiosk.clearScreen();
             configureScreenButtons(kiosk, mcs, p);
-            super.adjustCarruselButtons(kiosk, currentProduct, numProducts-1);
-            
+            super.adjustCarruselButtons(kiosk, currentProduct, numProducts - 1);
+
             char event = kiosk.waitEvent(30);
-            
+
             switch (event) {
                 case 'A': // Añadir
-                    if (currentSection < mc.getNumberOfSections()-1) {
-                        m.addProductToMenu(p);
-                        currentSection ++;
+                    if (currentSection < mc.getNumberOfSections() - 1) {
+                        m.addProductToMenu(p); // Añadir producto al menú
+                        currentSection++;
                         return this;
                     } else {
-                        m.addProductToMenu(p);
+                        m.addProductToMenu(p); // Añadir el último producto
                         Order o = c.getOrder();
                         o.addProduct(m);
+                        m = null; // Reiniciar el menú para la siguiente orden
                         return new OrderScreen();
                     }
                 case 'B': // Cancelar menú
+                    m = null; // Cancelar el menú actual
                     return new OrderScreen();
                 case 'C': // Cancelar pedido
+                    m = null; // Cancelar el menú actual
                     return new WelcomeScreen();
                 case 'G': // Anterior
-                    if (currentProduct > 1) {
+                    if (currentProduct > 0) {
                         currentProduct--;
                     }
                     return this;
                 case 'H': // Siguiente
-                    if (currentProduct < numProducts) {
+                    if (currentProduct < numProducts - 1) {
                         currentProduct++;
                     }
                     return this;
@@ -76,7 +77,7 @@ public class MenuScreen extends CarouselScreen {
         }
         return this;
     }
-    
+
     public void configureScreenButtons(SimpleKiosk kiosk, MenuCardSection mcs, IndividualProduct p) {
         super.configureScreenButtons(kiosk);
         kiosk.setTitle("Seleccione un " + mcs.getSectionName());
@@ -86,9 +87,7 @@ public class MenuScreen extends CarouselScreen {
             p.getDescription() + "\n" +
             (p.getPrice() / 100) + "€"
         );
-        kiosk.setOption('A', "Seleccionar producto");        
+        kiosk.setOption('A', "Seleccionar producto");
     }
 
 }
-    
-
