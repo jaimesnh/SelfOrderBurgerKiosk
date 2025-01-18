@@ -38,6 +38,7 @@ public class PurcheaseScreen implements KioskScreen{
         configureScreenButtons(kiosk, order);
 
         char event = kiosk.waitEvent(30);
+        System.out.println("Event received: " + event); // Depuración
 
         switch (event) {
             case 'A':
@@ -45,11 +46,14 @@ public class PurcheaseScreen implements KioskScreen{
             case 'B':
                 return new WelcomeScreen();
             case '1': 
+                
                 UrjcBankServer bank = new UrjcBankServer();
                 kiosk.retainCreditCard(false);
-                int cardNumber = (int) kiosk.getCardNumber();
+                long cardNumber = kiosk.getCardNumber();
+                
                 
                 if (bank.comunicationAvaiable()) {
+                  
             try {
                 if (bank.doOperation(cardNumber, order.getTotalAmount())) {
                     int kioskNumber = c.getKioskNumber();
@@ -58,8 +62,8 @@ public class PurcheaseScreen implements KioskScreen{
                     kiosk.print(order.getTicket());
                     if (kiosk.expelCreditCard(30)) {
                         return new WelcomeScreen();
-                    }
-                }
+                    } 
+                } 
                 else {
                     return (KioskScreen) this;
                 }
@@ -84,68 +88,85 @@ public class PurcheaseScreen implements KioskScreen{
     }
         
     public int incrementOrderNumber(int kioskNumber) {
-        int orderNumber = 0;
-        String ORDER_FILE = "data/order_file.txt";
-        // Leer el último número de pedido desde el disco
-        try (BufferedReader reader = new BufferedReader(new FileReader(ORDER_FILE))) {
-            orderNumber = Integer.parseInt(reader.readLine());
-        } catch (IOException | NumberFormatException e) {
-            System.err.println("Error leyendo el número de pedido: " + e.getMessage());
+    int orderNumber = 0;
+    String ORDER_FILE = "data/order_file.txt";
+
+    // Leer el último número de pedido desde el disco
+    try (BufferedReader reader = new BufferedReader(new FileReader(ORDER_FILE))) {
+        String line = reader.readLine();
+        if (line != null && line.matches("\\d+")) { // Verificar si la línea contiene solo dígitos
+            orderNumber = Integer.parseInt(line);
+        } else {
+            System.err.println("Error: El contenido del archivo no es un número válido.");
         }
-
-        // Incrementar el número de pedido
-        orderNumber += kioskNumber;
-
-        // Escribir el nuevo número de pedido en el disco
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(ORDER_FILE))) {
-            writer.write(Integer.toString(orderNumber));
-        } catch (IOException e) {
-            System.err.println("Error escribiendo el número de pedido: " + e.getMessage());
-        }
-
-        return orderNumber;
+    } catch (IOException | NumberFormatException e) {
+        System.err.println("Error leyendo el número de pedido: " + e.getMessage());
     }
+
+    // Incrementar el número de pedido
+    orderNumber += kioskNumber;
+
+    // Escribir el nuevo número de pedido en el disco
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(ORDER_FILE))) {
+        writer.write(Integer.toString(orderNumber));
+    } catch (IOException e) {
+        System.err.println("Error escribiendo el número de pedido: " + e.getMessage());
+    }
+
+    return orderNumber;
+}
 
     public void writerOrderToFile(Order order, int kioskNumber) throws IOException {
-  
-        String ORDER_FILE = "data/order_file.txt";
-        String LOCK_FILE = "order_file.lock";
-        Files.createFile(Paths.get(LOCK_FILE));
+    String ORDER_FILE = "data/order_file.txt";
+    String LOCK_FILE = "data/order_file.lock"; // Asegúrate de que el archivo de bloqueo esté en el mismo directorio
 
-        File orderFile = new File(ORDER_FILE);
-        long lastModified = orderFile.lastModified();
+    // Asegúrate de que el directorio "data" exista
+    File dataDir = new File("data");
+    if (!dataDir.exists()) {
+        dataDir.mkdirs();
+    }
 
-        // Verificar si el archivo debe reiniciarse
-        SimpleDateFormat dateFormat = new SimpleDateFormat("HH");
-        int lastModifiedHour = Integer.parseInt(dateFormat.format(new Date(lastModified)));
-        int currentHour = Integer.parseInt(dateFormat.format(new Date()));
+    // Manejar el archivo de bloqueo
+    File lockFile = new File(LOCK_FILE);
+    if (lockFile.exists()) {
+        lockFile.delete(); // Eliminar el archivo de bloqueo si ya existe
+    }
+    Files.createFile(lockFile.toPath()); // Crear el archivo de bloqueo
 
-        if (lastModifiedHour < 5 && currentHour >= 5) {
-            // Renombrar el archivo actual con la fecha
-            String dateSuffix = new SimpleDateFormat("yyyyMMdd").format(new Date());
-            File renamedFile = new File("order_file_" + dateSuffix + ".txt");
-            orderFile.renameTo(renamedFile);
+    File orderFile = new File(ORDER_FILE);
+    long lastModified = orderFile.lastModified();
 
-            // Crear un nuevo archivo de pedidos
-            orderFile = new File(ORDER_FILE);
-            try {
-                orderFile.createNewFile();
-            } catch (IOException ex) {
-                Logger.getLogger(PurcheaseScreen.class.getName()).log(Level.SEVERE, null, ex);
-            }
+    // Verificar si el archivo debe reiniciarse
+    SimpleDateFormat dateFormat = new SimpleDateFormat("HH");
+    int lastModifiedHour = Integer.parseInt(dateFormat.format(new Date(lastModified)));
+    int currentHour = Integer.parseInt(dateFormat.format(new Date()));
 
-            // Inicializar el número de pedido
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(orderFile))) {
-                writer.write(Integer.toString(kioskNumber));
-            }
+    if (lastModifiedHour < 5 && currentHour >= 5) {
+        // Renombrar el archivo actual con la fecha
+        String dateSuffix = new SimpleDateFormat("yyyyMMdd").format(new Date());
+        File renamedFile = new File("data/order_file_" + dateSuffix + ".txt");
+        orderFile.renameTo(renamedFile);
+
+        // Crear un nuevo archivo de pedidos
+        orderFile = new File(ORDER_FILE);
+        try {
+            orderFile.createNewFile();
+        } catch (IOException ex) {
+            Logger.getLogger(PurcheaseScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        // Escribir el pedido en el archivo actual
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(ORDER_FILE, true))) {
-            writer.write(order.getOrderText());
-            writer.newLine();
-            writer.write(order.getTotalAmount());
+        // Inicializar el número de pedido
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(orderFile))) {
+            writer.write(Integer.toString(kioskNumber));
         }
     }
+
+    // Escribir el pedido en el archivo actual
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(ORDER_FILE, true))) {
+        writer.write(order.getOrderText());
+        writer.newLine();
+        writer.write(String.valueOf(order.getTotalAmount()));
+    }
+}
         
 }
