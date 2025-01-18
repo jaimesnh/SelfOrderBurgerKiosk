@@ -15,11 +15,11 @@ import java.util.*;
  */
 public class Menu implements Product{
     
-    private List<IndividualProduct> products;
-    private static int discount = -1;  
+    private List<IndividualProduct> products = new ArrayList();
+    public static int discount = -1;  
     
     
-    public void menu() throws IOException {
+    public Menu() throws IOException {
         if (discount == -1) {
             try (BufferedReader br = new BufferedReader(new FileReader("discount.txt"))) {
                 String line = br.readLine();
@@ -36,7 +36,7 @@ public class Menu implements Product{
             total += product.getPrice();
         }
 
-        total -= (total * discount) / 100;
+        total -= (total * (discount / 100));
         return total;
     }
 
@@ -57,6 +57,10 @@ public class Menu implements Product{
     
     public int getNumProducts() {
         return products.size();
+    }
+    
+    public void addProductToMenu(IndividualProduct p) {
+        products.add(p);
     }
     
 }

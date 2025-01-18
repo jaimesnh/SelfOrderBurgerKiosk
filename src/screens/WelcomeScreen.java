@@ -6,6 +6,7 @@ package screens;
 
 import manager.Context;
 import manager.SimpleKiosk;
+import products.Order;
 
 
 /**
@@ -19,6 +20,7 @@ public class WelcomeScreen implements KioskScreen {
     public KioskScreen show(Context c) {
         SimpleKiosk kiosk = c.getKiosk();
         
+        c.setOrder(new Order());
         kiosk.clearScreen();
         configureScreenButtons(kiosk);
 

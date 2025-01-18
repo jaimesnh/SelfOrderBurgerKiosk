@@ -31,7 +31,7 @@ public class PurcheaseScreen implements KioskScreen{
     @Override
     public KioskScreen show(Context c) {
         SimpleKiosk kiosk = c.getKiosk();
-        Order order = (Order) c.getOrder();
+        Order order = c.getOrder();
         
         kiosk.setMenuMode();
         kiosk.clearScreen();

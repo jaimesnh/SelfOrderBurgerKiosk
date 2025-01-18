@@ -20,7 +20,7 @@ import products.Order;
  */
 public class MenuScreen extends CarouselScreen {
     
-    private int currentSection=0;
+    private int currentSection = 0;
     private int currentProduct = 0;
     
     
