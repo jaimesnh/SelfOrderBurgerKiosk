@@ -14,6 +14,7 @@ import screens.WelcomeScreen;
  */
 public class KioskManager {
     
+    //Este metodo es el encargado de dejar un bucle infinito de sucesiones de pantallas, llamado al principio del programa.
     public void start() throws IOException{
         
         Context c = new Context();

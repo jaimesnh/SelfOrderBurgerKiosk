@@ -12,10 +12,12 @@ import products.Order;
  *
  * @author jaime
  */
+
+//Esta clase se encarga de unir todas las diferentes clases
 public class Context {
     private TranslatorManager translatorManager;
     private SimpleKiosk kiosk;
-    private Order order = new Order();                    
+    private Order order;                    
     private MenuCard menuCard;
     private int orderNumber;
     private int kioskNumber = 1;
@@ -27,7 +29,7 @@ public class Context {
         this.kiosk =  new SimpleKiosk(translatorManager);
     }
  
-    
+    //Getters y setters de los atributos    
     public TranslatorManager getTranslator() { 
         return translatorManager; 
     }
