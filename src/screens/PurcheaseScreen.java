@@ -122,6 +122,17 @@ public class PurcheaseScreen implements KioskScreen{
                 currentCalendar.get(Calendar.HOUR_OF_DAY) >= 5 &&
                 lastModifiedCalendar.get(Calendar.DAY_OF_YEAR) != currentCalendar.get(Calendar.DAY_OF_YEAR)) {
                 orderNumber = 1;
+                
+                //Borrado de todos los txt de los pedidos del dia anterior
+                File dataDirectory = new File("data");
+                if (dataDirectory.exists() && dataDirectory.isDirectory()) {
+                File[] files = dataDirectory.listFiles();
+                if (files != null) {
+                    for (File file : files) {
+                        file.delete();
+                    }
+                }
+            }
             }
         } catch (IOException e) {
             System.err.println("Error al manejar el archivo de número de pedido: " + e.getMessage());
