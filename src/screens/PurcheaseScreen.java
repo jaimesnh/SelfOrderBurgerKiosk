@@ -24,6 +24,8 @@ import urjc.UrjcBankServer;
  *
  * @author jaime
  */
+
+//Pantalla de pago
 public class PurcheaseScreen implements KioskScreen{
 
     @Override
@@ -86,7 +88,7 @@ public class PurcheaseScreen implements KioskScreen{
                 return this;
             }
         }
-    }
+    } //Muestra el resumen del pedido, el precio y la opcion para meter la tarjeta
     
     private void configureScreenButtons(SimpleKiosk kiosk, Order order) {
         kiosk.setMessageMode();
@@ -148,7 +150,7 @@ public class PurcheaseScreen implements KioskScreen{
         }
 
         return orderNumber;
-    }   
+    } //Lee el numero de pedido anterio del fichero, le suma uno y actualiza el numero de pedido
     
     public void writerOrderToFile(int orderNumber, List<String> order) {
 
@@ -163,6 +165,6 @@ public class PurcheaseScreen implements KioskScreen{
         }   catch (IOException ex) {
                 Logger.getLogger(PurcheaseScreen.class.getName()).log(Level.SEVERE, null, ex);
             }
-    }
+    } //Escribe el resumen del pedido en un fichero .txt
 
 }

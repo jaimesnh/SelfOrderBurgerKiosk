@@ -15,6 +15,8 @@ import products.Order;
  *
  * @author jaime
  */
+
+// Pantalla para seleccion de producto
 public class ProductScreen extends CarouselScreen {
     
     
@@ -64,7 +66,7 @@ public class ProductScreen extends CarouselScreen {
                 return this;
         }
         
-    }
+    } //Muestra los productos y te la opcion de añadirlos
     
     public void configureScreenButtons(SimpleKiosk kiosk, MenuCardSection mcs, IndividualProduct p) {
         super.configureScreenButtons(kiosk);

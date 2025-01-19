@@ -16,6 +16,8 @@ import manager.TranslatorManager;
  *
  * @author jaime
  */
+
+//Clase IdiomScreen, pantalla para cambiar de idioma el programa
 public class IdiomScreen extends CarouselScreen {
     
     int currentIdiom = 0;
@@ -62,6 +64,6 @@ public class IdiomScreen extends CarouselScreen {
             Logger.getLogger(IdiomScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         return this;
-    }
+    } //Muestra la pantalla de selección de idioma en el kiosco
     
 }

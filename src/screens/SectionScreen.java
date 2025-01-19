@@ -9,6 +9,8 @@ import products.MenuCardSection;
  *
  * @author jaime
  */
+
+//Pantalla para elegir secciones del menú.
 public class SectionScreen extends CarouselScreen {
 
     private int currentSection = 0;
@@ -48,7 +50,7 @@ public class SectionScreen extends CarouselScreen {
             default:
                 return this;
         }
-    }
+    } //muestra los botones y controla la interaccion con la pantalla
 
     @Override
     public void configureScreenButtons(SimpleKiosk kiosk) {

@@ -15,6 +15,8 @@ import products.Order;
  *
  * @author ivann
  */
+
+//Pantalla para elegir menu
 public class MenuScreen extends CarouselScreen {
 
     private int currentSection = 0;
@@ -76,7 +78,7 @@ public class MenuScreen extends CarouselScreen {
             Logger.getLogger(MenuScreen.class.getName()).log(Level.SEVERE, null, ex);
         }
         return this;
-    }
+    } //Muestra la pantalla de selección de productos para el menu
 
     public void configureScreenButtons(SimpleKiosk kiosk, MenuCardSection mcs, IndividualProduct p) {
         super.configureScreenButtons(kiosk);
@@ -88,6 +90,6 @@ public class MenuScreen extends CarouselScreen {
             (p.getPrice() / 100) + "€"
         );
         kiosk.setOption('A', "Seleccionar producto");
-    }
+    } //Configura los botones de la pantalla y muestra el texto de la pantalla
 
 }

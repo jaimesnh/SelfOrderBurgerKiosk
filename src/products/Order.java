@@ -11,6 +11,8 @@ import java.util.*;
  *
  * @author jaime
  */
+
+//Clase Order, representa un pedido 
 public class Order {
     
     private int orderNumber;
@@ -22,7 +24,7 @@ public class Order {
              price += p.getPrice();
         }
         return price;
-    }
+    } //Devuelve el precio total del pedido
     
     public String getOrderText() {
         StringBuilder orderText = new StringBuilder("Productos: " + "\n");
@@ -31,15 +33,15 @@ public class Order {
         }
         
         return orderText.toString();
-    }
+    } //Crea un string de los productos del pedido
     
     public int getOrderNumber() {
         return this.orderNumber;
-    }
+    } //Devuelve el numero de pedido
     
     public void addProduct(Product p) {
         productList.add(p);
-    }
+    } //Añade un producto al pedido
     
     public List<String> getTicket() {
         
@@ -49,5 +51,5 @@ public class Order {
         }
         ticket.add(Float.toString((float) (this.getTotalAmount()/100.0)) + " €");
         return ticket;
-    }
+    } //Crea el ticket y añade los productos y el precio
 }

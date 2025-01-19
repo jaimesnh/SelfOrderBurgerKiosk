@@ -13,6 +13,8 @@ import java.util.*;
  *
  * @author jaime
  */
+
+//Clase Menu que implementa Product, representa un conjunto de productos individuales.
 public class Menu implements Product{
     
     private List<IndividualProduct> products = new ArrayList();
@@ -25,7 +27,7 @@ public class Menu implements Product{
                 discount = Integer.parseInt(line.trim());
             }
         }
-    }
+    } //Lee del fichero discount.txt el descuento que hay que aplicar al menu
     
     @Override
     public int getPrice() {
@@ -37,7 +39,7 @@ public class Menu implements Product{
 
         total -= (int) (total * (discount / 100.0));
         return total;
-    }
+    } //Devuelve el precio del menu aplicando el descuento
 
     @Override
     public String getName() {
@@ -48,18 +50,18 @@ public class Menu implements Product{
         }
 
         return nameBuilder.substring(0, nameBuilder.length() - 2);
-    }
+    } //Devuelve los nombres de los componentes del menu
     
     public Product getProduct(int i) {
         return products.get(i);
-    }
+    } //Devuelve la posicion del producto en la lista
     
     public int getNumProducts() {
         return products.size();
-    }
+    } //Devuelve el numero de productos de la lista 
     
     public void addProductToMenu(IndividualProduct p) {
         products.add(p);
-    }
+    } // Añade los productos al menu
     
 }

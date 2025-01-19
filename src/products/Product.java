@@ -8,9 +8,11 @@ package products;
  *
  * @author jaime
  */
+
+//Interfaz que deriva a las clases IndividualProduct y  Menu
 public interface Product {
     
     public int getPrice();
     public String getName();
     
-}
+} 

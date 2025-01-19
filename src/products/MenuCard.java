@@ -16,6 +16,7 @@ import java.util.logging.Logger;
  * @author jaime
  */
 
+//Clase MenuCard que gestiona una lista de secciones de un menú.
 public class MenuCard {
     
     private List<MenuCardSection> sectionList;
@@ -29,11 +30,11 @@ public class MenuCard {
             return sectionList.get(index);
         }
         else return null;
-    }
+    } //Devuelve la seccion en la que estés
 
     public int getNumberOfSections() {
         return sectionList.size();
-    }
+    } //Devuelve el numero de secciones que hay
 
     public static MenuCard loadFromDisk() {
         try (XMLDecoder decoder = new XMLDecoder(new FileInputStream("catalog.xml"))) {
@@ -50,5 +51,5 @@ public class MenuCard {
             Logger.getLogger(MenuCard.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-    }
+    } // lee del disco el fichero catalog.txt para obtener la carta de productos disponibles
 }

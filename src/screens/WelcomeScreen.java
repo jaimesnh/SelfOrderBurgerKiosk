@@ -13,6 +13,8 @@ import products.Order;
  *
  * @author jaime
  */
+
+//Pantalla de inicio
 public class WelcomeScreen implements KioskScreen {
 
         
@@ -34,7 +36,7 @@ public class WelcomeScreen implements KioskScreen {
             default:
                 return this;
         }
-    }
+    } //Te da la opcion de cambiar de idioma o comenzar un pedido
     
     private void configureScreenButtons(SimpleKiosk kiosk) {
         kiosk.setMenuMode();

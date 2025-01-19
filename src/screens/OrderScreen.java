@@ -6,12 +6,13 @@ package screens;
 
 import manager.Context;
 import manager.SimpleKiosk;
-import products.Order;
 
 /**
  *
  * @author jaime
  */
+
+//Clase OrderScreen, pantalla con las opciones para realizar un pedido
 public class OrderScreen implements KioskScreen {
     
         @Override      
@@ -35,7 +36,7 @@ public class OrderScreen implements KioskScreen {
                 default:
                     return this;
             }
-        }
+        } //Muestra la pantalla con las opciones para realizar el pedido
         
         private void configureScreenButtons(SimpleKiosk kiosk) {
             kiosk.setTitle("Elije un producto nuevo o finaliza pedido");
