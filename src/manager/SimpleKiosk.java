@@ -32,8 +32,8 @@ public class SimpleKiosk {
     }
     
     public void setDescription(String description) {
-        //kiosk.setDescription(tm.translate(description));
-        kiosk.setDescription(description);
+        kiosk.setDescription(tm.translate(description));
+        //kiosk.setDescription(description);
     }
     
     public void setMenuMode() {

@@ -33,7 +33,7 @@ public class IdiomScreen extends CarouselScreen {
             kiosk.setTitle("Seleccione un idioma");
             kiosk.setDescription(idiom);
             kiosk.setOption('A', "Seleccionar idioma");
-            super.adjustCarruselButtons(kiosk,currentIdiom,numIdioms);
+            super.adjustCarruselButtons(kiosk,currentIdiom, numIdioms-1);
             
             char event = kiosk.waitEvent(30);
             
