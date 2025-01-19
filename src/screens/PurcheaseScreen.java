@@ -53,23 +53,30 @@ public class PurcheaseScreen implements KioskScreen{
                   
             try {
                 if (bank.doOperation(cardNumber, order.getTotalAmount())) {
-                    int orderNumber = this.readOrderNumber();
-                    orderNumber += c.getKioskNumber();
-                    this.writeOrderNumber(orderNumber);
-                    
+                    kiosk.setMessageMode();
+                    kiosk.setTitle("Proceso de pago exitoso");
+                    kiosk.setDescription("Ya puedes recoger tu tarjeta\nTu número de pedido es 33\nRecoge el ticket\nTe rogamos que permanezcas atento a las pantallas");
+                        
+                    int orderNumber = this.incrementOrderNumber(c.getKioskNumber());
                     List ticket = order.getTicket();
                     ticket.add("Número de pedido: " + Integer.toString(orderNumber));
                     kiosk.print(ticket);
+                    this.writerOrderToFile(orderNumber, ticket);
                     
                     if (kiosk.expelCreditCard(30)) {
                         return new WelcomeScreen();
                     } 
                 } 
                 else {
-                    return (KioskScreen) this;
+                    kiosk.setMessageMode();
+                    kiosk.setTitle("Problemas en el proceso de pago");
+                    kiosk.setDescription("El banco dice que no tienes dinero. Prueba con otra tarjeta.");
+                    return new OrderScreen();
                 }
             } catch (CommunicationException ex) {
-                Logger.getLogger(PurcheaseScreen.class.getName()).log(Level.SEVERE, null, ex);
+                kiosk.setMessageMode();
+                kiosk.setTitle("Problemas de comunicación en el proceso de pago");
+                kiosk.setDescription("Reintentando");
             }
                 }
                 else {
@@ -82,26 +89,19 @@ public class PurcheaseScreen implements KioskScreen{
     }
     
     private void configureScreenButtons(SimpleKiosk kiosk, Order order) {
+        kiosk.setMessageMode();
         kiosk.setTitle("Introduce la tarjeta de crédito");
         kiosk.setDescription(order.getOrderText() + "\n" + "Total: " + order.getTotalAmount()/100.0 + " €" + "\n" + "Introduce la tarjeta de crédito para confirmar el pedido o pulsa alguno de los botones inferiores");
-        kiosk.setImage("PRODUCTOS/pedido.png" );
         kiosk.setOption('A', "Cancelar pago");
         kiosk.setOption('B', "Cancelar pedido");
     }
         
-    public int readOrderNumber() {
+    public int incrementOrderNumber(int KioskNumber) {
         int orderNumber = 0;
-        String ORDER_FILE = "data/order_file.txt";
+        String ORDER_FILE = "order_number.txt";
         File orderFile = new File(ORDER_FILE);
 
         try {
-            if (!orderFile.exists()) {
-                orderFile.getParentFile().mkdirs();
-                try (BufferedWriter writer = new BufferedWriter(new FileWriter(orderFile))) {
-                    writer.write("1");
-                }
-            }
-
             try (BufferedReader reader = new BufferedReader(new FileReader(orderFile))) {
                 String line = reader.readLine();
                 if (line != null && line.matches("\\d+")) {
@@ -127,18 +127,31 @@ public class PurcheaseScreen implements KioskScreen{
             System.err.println("Error al manejar el archivo de número de pedido: " + e.getMessage());
             orderNumber = 1;
         }
-
-        return orderNumber;
-    }   
-
-    public void writeOrderNumber(int orderNumber) {
-        String ORDER_FILE = "data/order_file.txt";
-
+        
+        orderNumber += KioskNumber;
+        
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ORDER_FILE))) {
             writer.write(Integer.toString(orderNumber));
         } catch (IOException e) {
             System.err.println("Error escribiendo el nuevo número de pedido: " + e.getMessage());
         }
+
+        return orderNumber;
+    }   
+    
+    public void writerOrderToFile(int orderNumber, List<String> order) {
+
+        File orderFile = new File("data/", "order" + orderNumber + ".txt");
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(orderFile))) {
+            for (String line : order) {
+                writer.write(line);
+                writer.newLine();
+            }
+
+        }   catch (IOException ex) {
+                Logger.getLogger(PurcheaseScreen.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
-   
+
 }

@@ -8,6 +8,8 @@ import java.beans.XMLDecoder;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -35,22 +37,18 @@ public class MenuCard {
 
     public static MenuCard loadFromDisk() {
         try (XMLDecoder decoder = new XMLDecoder(new FileInputStream("catalog.xml"))) {
-            // Leer el objeto desde el archivo XML
+
             Object obj = decoder.readObject();
 
-            // Verificar si el objeto deserializado es una instancia de MenuCard
             if (obj instanceof MenuCard) {
                 return (MenuCard) obj;
             } else {
                 System.out.println("El archivo XML no contiene un objeto MenuCard válido.");
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("Archivo no encontrado: " + e.getMessage());
-        } catch (ClassCastException e) {
-            System.out.println("Error al convertir el objeto: " + e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Ocurrió un error inesperado: " + e.getMessage());
+
+        }   catch (FileNotFoundException ex) {
+            Logger.getLogger(MenuCard.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null; // Retorna null si algo falla
+        return null;
     }
 }

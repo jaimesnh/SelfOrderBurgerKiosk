@@ -39,6 +39,7 @@ public class OrderScreen implements KioskScreen {
         
         private void configureScreenButtons(SimpleKiosk kiosk) {
             kiosk.setTitle("Elije un producto nuevo o finaliza pedido");
+            kiosk.setImage("PRODUCTOS/pedido.png" );
             kiosk.setOption('A', "Añadir menú a pedido");
             kiosk.setOption('B', "Añadir producto individual al pedido");
             kiosk.setOption('C', "Finalizar y pagar");
