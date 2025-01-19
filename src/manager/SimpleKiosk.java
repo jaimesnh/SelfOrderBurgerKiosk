@@ -11,6 +11,7 @@ import sienens.BurgerSelfOrderKiosk;
  *
  * @author jaime
  */
+//Clase encargada de abstraerse a la clase BurgerSelfOrderKiosk
 public class SimpleKiosk {
     //ATRIBUTOS
     private BurgerSelfOrderKiosk kiosk;
@@ -23,17 +24,14 @@ public class SimpleKiosk {
 
     public void setOption(char option, String value) {
         kiosk.setOption(option, tm.translate(value));
-        //kiosk.setOption(option, value);
     }
     
     public void setTitle(String title) {
         kiosk.setTitle(tm.translate(title));
-        //kiosk.setTitle(title);
     }
     
     public void setDescription(String description) {
         kiosk.setDescription(tm.translate(description));
-        //kiosk.setDescription(description);
     }
     
     public void setMenuMode() {
@@ -45,11 +43,6 @@ public class SimpleKiosk {
     }
     
     public void print(List<String> text) {
-        //No creo que sea necesario
-        //List<String> translatedList = new ArrayList<>();
-        //for (String word: text) {
-        //    translatedList.add(tm.translate(word));
-        //}
         kiosk.print(text);
     }
     
@@ -61,6 +54,7 @@ public class SimpleKiosk {
         return kiosk.expelCreditCard(timeout);
     }
     
+    //Metodo encargado de poner todos los botones a null
     public void clearScreen() {
         for (char letter = 'A'; letter <= 'H'; letter++) {
             this.setOption(letter, null);

@@ -10,8 +10,10 @@ import java.io.IOException;
  *
  * @author jaime
  */
-public class BurgerKioskApplication {
 
+public class BurgerKioskApplication {
+    
+    //Se encarga de crear un objeto KioskManager y llamar al metodo start del mismo
     public static void main(String[] args) throws IOException {
         KioskManager km = new KioskManager();
         km.start();
