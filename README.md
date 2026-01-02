@@ -45,5 +45,3 @@ This software was developed as part of a university course. See the LICENSE file
 This repository is intended for educational use. For changes, open an issue or pull request and mention your course/instructor if relevant.
 
 ---
-
-*If you want the README customized with your university name, course, year, or authors, let me know and I will update it.*
